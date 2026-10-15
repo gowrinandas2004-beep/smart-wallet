@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget-Calculator register</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4151/4151856.png">
+
+     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+ 
+
+  <!-- fontawsome -->
+   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<style>
+    .row{
+        display: flex;
+        gap:20px;
+    }
+</style>
+  
+</head>
+<body style="background-color:rgb(178, 198, 191); " class="container">
+
+     <nav class="navbar p-3 position-relative">
+
+    <!-- Logo -->
+   
+
+    <!-- Center Title -->
+    <h1 class="position-absolute top-50 start-50 translate-middle"
+        style="font-family:cursive; color:green;">
+         <img 
+        src="https://cdn-icons-png.flaticon.com/512/4151/4151856.png" 
+        alt="logo" 
+        width="70px"
+    >
+        <span style="color:rgb(16, 16, 147);">S</span>mart
+        <span style="color:rgb(16, 16, 147);">W</span>allet
+    </h1>
+
+    <!-- Logout -->
+    <button 
+        class="btn btn-secondary ms-auto"
+        id="logout"
+        onclick="Logout()">
+        Logout
+        <i class="fa-solid fa-power-off" style="color:white;"></i>
+    </button>
+
+</nav>
+        <div class="title m-5">
+                      <h3 id="user" style="color:rgb(16, 16, 147);"><i class="fa-solid fa-user" style="color:rgb(16, 16, 147);"></i> Welcome back, User</h3>
+
+   
+        </div>
+        
+
+       <div class="row g-4 g-4 d-flex justify-content-evenly">
+          <div class="col" style="  background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
+                <h3 class=" p-2"></h3>
+                <h6 class=" p-2 text-secondary">Total Income</h6>  
+               
+                
+                <h2 id="TIncome" class=" text-success">₹ 0</h2>
+            </div>
+
+            <div class="col" style="  background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
+         <h3 class=" p-2"></h3>
+                <h6 class="p-2  text-secondary">Total Expense</h6>
+             
+                <h2 id="TExpense" class=" text-danger">₹ 0</h3>
+            </div>
+
+            <div class="col" style="  background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
+        <h3 class=" p-2"></h3>
+                <h6 class="p-2  text-secondary">Total Balance</h6>
+             
+                
+                <h2 id="TBalance" class=" text-primary">₹ 0 </h2>
+            </div>
+       </div>
+
+    <div class="row g-4 g-4 m-5 g-4">
+        <div class="col border border-1 shadow p-3" style="  background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
+
+             <div class=" d-flex justify-content-center">
+            
+             
+           
+        </div>
+        <br>
+         <h4 class="text-success text-center "> Add Income</h4>
+         <br>
+
+          <center> <hr style="width:70% ;height:2px; " class="bg-success">
+       </center> 
+       <div class="form d-flex justify-content-center">
+                <form id="myform">
+                <input id="IncomeType" type="text" class="form-control " placeholder="Enter Income Type " style="border-radius: 10px; width: 350px;">
+                    <br><input id="IncomeAmount" type="text" class="form-control " placeholder="Enter Amount" style="border-radius: 10px; width: 350px;">
+                 
+                <div class="d-grid ">
+                        <button type="button" class="m-4  btn btn-success" onclick="AddIncome()">Add Income</button>
+                    </div>
+            </form>
+
+       
+        </div>
+        </div>
+       
+        <div class="col  border border-1 shadow p-3" style="  background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
+            <div class=" d-flex justify-content-center">
+          
+
+           
+        </div>
+        <br>
+         <h4 class="text-success text-center">Add Expense</h4>
+         <br>
+          <center> <hr style="width:70% ;height:2px; " class="bg-success">
+       </center> 
+
+        <div class="form d-flex justify-content-center">
+                <form id="myform">
+                <input id="ExpenseType" type="text" class="form-control " placeholder="Enter Expense Type" style="border-radius: 10px; width: 350px;">
+                    <br><input id="ExpenseAmount" type="text" class="form-control " placeholder="Enter Amount" style="border-radius: 10px; width: 350px;">
+                    <div class="d-grid ">
+                        <button type="button" class="m-4  btn btn-info" onclick="AddExpense()">Add Expenses</button>
+                    </div>
+            </form>
+           
+            </div>
+        </div>
+        
+    </div>
+
+
+    <br>
+    <br>
+
+    <h3 class="text-center"> Income and Expense Details</h3>
+     <center> <hr style="width:70% ;height:2px; background-color:rgb(16, 16, 147); ">
+       </center> 
+   <br>
+       <div class="row g-4" > 
+
+        <div class="col "  style="  background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        height: 500px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);" >
+            <div class="table p-3" >
+                <h3 class="text-primary">Income</h3>
+               <table class="w-100">
+    <thead>
+        <tr style="
+            background-color: rgb(255, 243, 205);
+            border-bottom: 5px solid rgb(255, 192, 203);
+        ">
+            <th class="p-3">Type</th>
+            <th class="p-3">Amount</th>
+            <th class="p-3">Balance</th>
+            <th class="p-3">Date&Time</th>
+        </tr>
+    </thead>
+
+    <tbody id="Incomebody">
+    </tbody>
+</table>
+        </div>
+        </div>
+        
+        <div class="col"  style="  background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        height: 500px;
+        
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
+
+            <div class="table p-3">
+            <h3 class="text-primary">Expense</h3>
+
+            
+                   <table class="w-100">
+    <thead>
+        <tr style="
+            background-color: rgb(255, 243, 205);
+            border-bottom: 5px solid rgb(255, 192, 203);
+        ">
+            <th class="p-3">Type</th>
+            <th class="p-3">Amount</th>
+            <th class="p-3">Balance</th>
+            <th class="p-3">Date&Time</th>
+        </tr>
+    </thead>
+
+    <tbody id="Expensebody">
+       
+    </tbody>
+</table>
+                    
+        </div>
+        </div>
+        
+       </div>
+
+       <br>
+       <center>
+        <h2>Expense Pie-Chart</h2>
+        
+       <div class="d-grid  mb-5" style="width:300px">
+        <button class="btn btn-primary btn-center " id="piechart" onclick="PieChart()" type="button">Pie-Chart</button>
+       </div>
+       <div style="width:400px; margin:auto;">
+    <canvas id="myChart"></canvas>
+</div>
+       </center>
+
+</body>
+<script>
+   
+const username = localStorage.getItem("username");
+
+document.getElementById("user").innerHTML =
+    `<i class="fa-solid fa-user"></i> Welcome back, ${username} `;
+
+    function AddIncome()
+{
+    const income = {
+        incometype: IncomeType.value,
+        incomeamount: Number(document.getElementById("IncomeAmount").value) ,
+        datetime: new Date().toLocaleString()
+    };
+
+    localStorage.setItem(
+        income.incometype,
+        JSON.stringify(income)
+    );
+
+    console.log(income);
+
+    let totalincome = Number(
+        document.getElementById("TIncome").innerText.replace("₹", "")
+    ) || 0;
+
+    totalincome = totalincome + income.incomeamount;
+
+    // Save total income
+    localStorage.setItem("TotalIncome", totalincome);
+
+    // Display total income
+    document.getElementById("TIncome").innerText = "₹ " + totalincome;
+
+    // Update balance
+    let totalbalance = Number(
+        document.getElementById("TBalance").innerText.replace("₹", "")
+    ) || 0;
+
+    totalbalance = totalbalance + income.incomeamount;
+
+    document.getElementById("TBalance").innerText = "₹ " + totalbalance;
+
+    document.getElementById("Incomebody").innerHTML += `
+        <tr>
+            <td>${income.incometype}</td>
+            <td>₹ ${income.incomeamount}</td>
+            <td>₹ ${income.incomeamount}</td>
+            <td>${income.datetime}</td>
+        </tr>
+    `;
+
+    document.getElementById("myform").reset();
+
+   
+}
+
+
+function AddExpense()
+{
+    const expense = {
+        expensetype: ExpenseType.value,
+        expenseamount: Number(
+            document.getElementById("ExpenseAmount").value ),
+            datetime: new Date().toLocaleString()
+            
+        
+    };
+
+    localStorage.setItem(
+        expense.expensetype,
+        JSON.stringify(expense)
+    );
+
+    console.log(expense);
+
+     // Get total income
+    let tincome = Number(
+        localStorage.getItem("TotalIncome")
+    ) || 0;
+
+    // Get previous expense
+    let totalexpense = Number(
+        document.getElementById("TExpense").innerText.replace("₹", "")
+    ) || 0;
+
+    // Add new expense
+    totalexpense = totalexpense + expense.expenseamount;
+
+    // Save total expense
+    localStorage.setItem("TotalExpense", totalexpense);
+
+    // Display total expense
+    document.getElementById("TExpense").innerText = "₹ " + totalexpense;
+
+   
+     let balance = Number(
+        localStorage.getItem("TBalance")
+    ) || 0;
+  
+    balance = tincome - totalexpense;
+
+    expense.balance = balance
+    
+
+    document.getElementById("Expensebody").innerHTML += `
+        <tr>
+            <td>${expense.expenseamount}</td>
+            <td>₹ ${expense.expenseamount}</td>
+            <td>₹ ${expense.balance}</td>
+            <td>${expense.datetime}</td>
+        </tr>
+    `;
+// Display balance
+    document.getElementById("TBalance").innerText = "₹ " + balance;
+
+    document.getElementById('myform').reset();
+}
+
+
+function PieChart()
+{
+    let totalIncome = Number(localStorage.getItem("TotalIncome")) || 0;
+    let totalExpense = Number(localStorage.getItem("TotalExpense")) || 0;
+
+    // Remove old chart if it already exists
+    if (window.myPieChart)
+    {
+        window.myPieChart.destroy();
+    }
+
+    window.myPieChart = new Chart("myChart",
+    {
+        type: "pie",
+
+        data:
+        {
+            labels: ["Income", "Expense"],
+
+            datasets:
+            [{
+                data: [totalIncome, totalExpense],
+
+                backgroundColor:
+                [
+                    "#198754",   // Green - Income
+                    "#dc3545"    // Red - Expense
+                ]
+            }]
+        },
+
+        options:
+        {
+            title:
+            {
+                display: true,
+                text: "Income vs Expense"
+            },
+
+            legend:
+            {
+                display: true,
+                position: "bottom"
+            }
+        }
+    });
+}
+
+function Logout()
+{
+    window.location='./login.html'
+}
+</script>
+</html>
+
+
